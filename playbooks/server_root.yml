@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: root
+
+  vars:
+    DEPLOY_USER_NAME: www
+    SSH_KEYS:
+    - ~/.ssh/id_rsa.pub
+
+  vars_prompt:
+  - name: "DEPLOY_USER_PASSWORD"
+    prompt: "Enter deploy user password"
+
+  roles:
+  - name: "Setting common preparing things"
+    role: common

@@ -1,0 +1,16 @@
+- name: Create deploy user
+  user: name={{ DEPLOY_USER_NAME }} 
+        password={{ DEPLOY_USER_PASSWORD | password_hash('sha512') }} 
+        shell=/bin/bash 
+        update_password=on_create
+
+- name: Create deploy user to sudoers
+  lineinfile: dest=/etc/sudoers
+              regexp="{{ DEPLOY_USER_NAME }} ALL"
+              line="{{ DEPLOY_USER_NAME }} ALL=(ALL) ALL"
+              state=present
+
+- name: Create authorized keys for deploy user
+  authorized_key: user={{ DEPLOY_USER_NAME }} 
+                  key="{{ lookup('file', item) }}"
+  with_items: SSH_KEYS

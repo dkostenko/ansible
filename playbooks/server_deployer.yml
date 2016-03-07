@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: www
+  become: yes
+  become_method: sudo
+
+  vars:
+    DEPLOY_USER_NAME: www
+    SSH_KEYS:
+    - ~/.ssh/id_rsa.pub
+
+  roles:
+  - name: "Install nginx"
+    role: mats116.nginx
+

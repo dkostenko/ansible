@@ -1,0 +1,13 @@
+---
+- hosts: vagrant
+  remote_user: vagrant
+  become: yes
+  become_user: root
+
+  vars_prompt:
+  - name: "ROOT_PASSWORD"
+    prompt: "Enter new root password"
+
+  roles:
+  - name: "Make vagrant box as usual remote server"
+    role: vagrant_setup
