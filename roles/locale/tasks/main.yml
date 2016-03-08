@@ -1,0 +1,23 @@
+---
+- name: Locale | Install locale packages
+  become: yes
+  apt:
+    pkg: "{{ item }}"
+    state: "{{ local_package_state }}"
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items: locale_packages
+
+- name: Locale | Generate system locale's
+  become: yes
+  locale_gen:
+    name: "{{ item.name }}.{{ item.encoding }}"
+    state: present
+  with_items: locale_gen
+
+
+- name: Locale | Set system default locale
+  become: yes
+  template:
+    src: locale.tpl
+    dest: /etc/default/locale

@@ -14,3 +14,6 @@
   roles:
   - name: "Setting common preparing things"
     role: common
+
+  - name: "Set locales"
+    role: locale

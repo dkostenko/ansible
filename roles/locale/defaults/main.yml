@@ -1,0 +1,27 @@
+---
+ansidev_package_state: present
+
+locale_packages:
+  - locales
+  - language-pack-nl
+local_package_state: "{{ ansidev_package_state }}"
+
+locale_gen:
+  - { name: 'en_US', encoding: 'UTF-8' }
+  - { name: 'ru_RU', encoding: 'UTF-8' }
+
+locale_LANG: en_US.UTF-8 # This is the default value for all other value below (locale_LC_*)
+locale_LC_ADDRESS:
+locale_LC_ALL:
+locale_LC_COLLATE:
+locale_LC_CTYPE:
+locale_LC_IDENTIFICATION:
+locale_LC_MEASUREMENT:
+locale_LC_MESSAGES:
+locale_LC_MONETARY:
+locale_LC_NAME:
+locale_LC_NUMERIC:
+locale_LC_PAPER:
+locale_LC_RESPONSE:
+locale_LC_TELEPHONE:
+locale_LC_TIME:

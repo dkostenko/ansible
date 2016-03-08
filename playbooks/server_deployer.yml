@@ -10,6 +10,14 @@
     - ~/.ssh/id_rsa.pub
 
   roles:
-  - name: "Install nginx"
-    role: mats116.nginx
+  - name: "Install Nginx"
+    role: nginx
+    tags: [role_nginx]
 
+  - name: "Install PostgreSQL"
+    role: postgresql
+    tags: [role_postgresql]
+
+  - name: "Install Redis"
+    role: redis
+    tags: [role_redis]
